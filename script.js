@@ -1,9 +1,9 @@
 let calculationString = "";
-let calculationHistory = []; // To store the calculation history
+let calculationHistory = [];
 const maxHistoryItems = 8;
 const input = document.querySelector(".input");
 
-//dark theme functionality:
+
 const icon = document.getElementById("icon");
 icon.onclick = function () {
   document.body.classList.toggle("dark-theme");
@@ -14,26 +14,26 @@ icon.onclick = function () {
   }
 };
 
-// Function to update the input field and store history
+
 function updateInputAndHistory() {
   document.querySelector("input").value = calculationString;
   localStorage.setItem(
     "calculationHistory",
     JSON.stringify(calculationHistory)
   );
-  updateHistoryList(); // Update the history list
+  updateHistoryList(); 
 }
 
-// Load calculation history from local storage if it exists
+
 const savedCalculationHistory = localStorage.getItem("calculationHistory");
 if (savedCalculationHistory) {
   calculationHistory = JSON.parse(savedCalculationHistory);
-  updateHistoryList(); // Update the history list when the page loads
+  updateHistoryList(); 
 }
 
 function updateHistoryList() {
   const historyList = document.getElementById("history-list");
-  historyList.innerHTML = ""; // Clear the existing list
+  historyList.innerHTML = "";
 
   calculationHistory.forEach((calculation) => {
     const listItem = document.createElement("li");
@@ -74,18 +74,18 @@ function calculate() {
     }
   } catch (e) {
     input.value = "";
-    input.classList.add("shake"); // Add shake animation class
+    input.classList.add("shake"); 
     setTimeout(() => {
-      input.classList.remove("shake"); // Remove shake animation class after animation
+      input.classList.remove("shake"); 
     }, 500);
   }
 }
 
 input.addEventListener("keydown", function (e) {
   if (!isValid(e.key)) {
-    input.classList.add("shake"); // Add shake animation class
+    input.classList.add("shake"); 
     setTimeout(() => {
-      input.classList.remove("shake"); // Remove shake animation class after animation
+      input.classList.remove("shake");
     }, 500);
     e.preventDefault();
   }
@@ -101,7 +101,7 @@ function isValid(key) {
   );
 }
 
-/** clear Calculation History **/
+
 const clearBtn = document.querySelector(".clearHistory");
 clearBtn.addEventListener("click", function (e) {
   localStorage.clear();
@@ -125,7 +125,7 @@ function isValid(key) {
   );
 }
 
-//Onclick Sound functionality:
+
 const click_sound = document.querySelector("#click-sound");
 
 buttons.forEach((button) => {
